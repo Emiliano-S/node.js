@@ -1,0 +1,4 @@
+> GET /posts/1/comments HTTP/2
+> Host: jsonplaceholder.typicode.com
+> user-agent: curl/7.84.0
+> accept: */*
