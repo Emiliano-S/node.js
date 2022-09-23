@@ -36,3 +36,42 @@ test("GET /planets", async()=>{
 
     expect(response.body).toEqual(planets)
 })
+
+describe("POST /planets", ()=>{
+
+    test("Valid request", async()=>{
+        const planet = {
+                name: "Mercury",
+                diameter: 123,
+                moons: 12
+            }
+
+        const response = await request
+            .post("/planets")
+            .send(planet)
+            .expect(201)
+            .expect("Content-Type", /application\/json/);
+
+        expect(response.body).toEqual(planet)
+    });
+
+    test("Invalid request", async()=>{
+        const planet = {
+                diameter: 123,
+                moons: 12
+            }
+
+        const response = await request
+            .post("/planets")
+            .send(planet)
+            .expect(422)
+            .expect("Content-Type", /application\/json/);
+
+        expect(response.body).toEqual({
+            errors: {
+                body: expect.any(Array)
+            }
+        })
+    })
+});
+
