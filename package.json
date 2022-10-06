@@ -4,11 +4,13 @@
     "format": "prettier --write .",
     "lint": "eslint src/ --cache --fix",
     "test": "jest",
+    "test:dev": "jest --watch",
     "build": "tsc",
     "build:dev": "tsc --watch",
     "start": "node --enable-source-maps dist/server.js",
     "start:dev": "nodemon --watch dist/ --watch .env",
-    "dev": "npm run build && concurrently 'npm:build:dev' 'npm:start:dev'"
+    "dev": "npm run build && concurrently 'npm:build:dev' 'npm:start:dev'",
+    "db:start": "sudo service postgresql start"
   },
   "engines": {
     "node": ">=16"
@@ -42,9 +44,12 @@
   },
   "dependencies": {
     "@prisma/client": "^4.3.1",
+    "@sinclair/typebox": "^0.24.41",
+    "ajv-formats": "^2.1.1",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "express-json-validator-middleware": "^3.0.1"
   }
 }
