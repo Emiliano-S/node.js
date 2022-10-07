@@ -10,7 +10,8 @@
     "start": "node --enable-source-maps dist/server.js",
     "start:dev": "nodemon --watch dist/ --watch .env",
     "dev": "npm run build && concurrently 'npm:build:dev' 'npm:start:dev'",
-    "db:start": "sudo service postgresql start"
+    "db:start": "sudo service postgresql start",
+    "web": "serve -p 8080 web/"
   },
   "engines": {
     "node": ">=16"
@@ -50,6 +51,7 @@
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
     "pg": "^8.8.0",
-    "express-json-validator-middleware": "^3.0.1"
+    "express-json-validator-middleware": "^3.0.1",
+    "cors": "^2.8.5"
   }
 }
